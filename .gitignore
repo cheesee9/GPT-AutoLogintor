@@ -1,0 +1,12 @@
+node_modules/
+work/
+*.log
+auth.json
+session.json
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+cookies.json
+storage-state.json

@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "GPT AutoLogintor · 本地导入",
+  "version": "1.0.0",
+  "description": "由用户主动向当前无痕窗口的 ChatGPT Cookie 存储区导入会话令牌。",
+  "minimum_chrome_version": "120",
+  "incognito": "split",
+  "permissions": ["cookies"],
+  "host_permissions": ["https://chatgpt.com/*"],
+  "action": { "default_title": "GPT AutoLogintor · 本地导入", "default_popup": "popup.html" },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'; base-uri 'none'" }
+}

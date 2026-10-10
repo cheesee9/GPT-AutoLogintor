@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>GPT AutoLogintor · 本地会话工具</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="GPT AutoLogintor 首页"><span class="mark">G<span>↗</span></span> GPT AutoLogintor</a>
+    <span class="local-pill"><span class="dot"></span> 本机运行 · 无云端存储</span>
+  </header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">LOCAL SESSION WORKSPACE</p>
+      <h1>本地提取，<br class="mobile-break">隐私窗口打开。</h1>
+      <p class="lead">离线提取令牌，打开隐私窗口；Chrome / Edge 可配合本地扩展导入。</p>
+    </section>
+    <div id="connection" class="notice" role="status" hidden></div>
+    <div class="workspace">
+      <section class="card" aria-labelledby="extract-title">
+        <div class="card-heading"><span class="step">01</span><span class="tag">仅本地解析</span></div>
+        <h2 id="extract-title">提取 Session Token</h2>
+        <label for="session-json">Session JSON</label>
+        <textarea id="session-json" placeholder='{"user": {...}, "sessionToken": "...", ...}' autocomplete="off" spellcheck="false" autocapitalize="off"></textarea>
+        <div class="row actions"><button id="extract" class="button primary">提取令牌 <span>↗</span></button><button id="clear-extract" class="button quiet">清空</button></div>
+        <div id="extract-error" class="message error" role="alert" hidden></div>
+        <div id="extract-result" class="result" hidden>
+          <div class="result-title"><span class="dot"></span> 已提取</div>
+          <dl class="details"><div><dt>账号</dt><dd id="account-email">—</dd></div><div><dt>令牌大小</dt><dd id="token-size">—</dd></div></dl>
+          <label for="extracted-token">提取结果</label>
+          <div class="token-field"><input id="extracted-token" type="password" readonly autocomplete="off" spellcheck="false"><button id="reveal-extracted" class="reveal" aria-label="显示提取结果" aria-pressed="false">显示</button></div>
+          <div class="row result-actions"><button id="copy-token" class="button secondary">复制令牌</button></div>
+          <p class="fine">仅在本页面提取，不会传入右侧浏览器，也不会写入工具日志。</p>
+        </div>
+      </section>
+      <section class="card" aria-labelledby="login-title">
+        <div class="card-heading"><span class="step">02</span><span class="tag">普通浏览器 · 隐私模式</span></div>
+        <h2 id="login-title">打开无痕窗口</h2>
+        <label for="browser">使用浏览器</label>
+        <select id="browser" disabled><option>正在检测本机浏览器…</option></select>
+        <button id="launch" class="button primary full" disabled>打开 ChatGPT 隐私窗口 <span>↗</span></button>
+        <div id="login-error" class="message error" role="alert" hidden></div>
+        <section class="browser-status" aria-live="polite">
+          <div class="status-heading"><span id="status-dot" class="dot neutral"></span><strong id="status-title">等待打开浏览器</strong><span id="status-label" class="tag">未启动</span></div>
+          <p id="status-description">选择本机浏览器，以无痕或隐私模式打开 ChatGPT。</p>
+        </section>
+        <details class="browser-status"><summary>如何清除登录数据？</summary><p>请先结束当前操作，再手动关闭该浏览器同一配置下的全部无痕 / InPrivate / 隐私窗口。只关闭一个标签或一个窗口，可能仍会保留隐私会话。</p><p>切换账号前先完成上述操作。下方“清空界面凭证”只清空本工具的输入，不会退出浏览器账号。关闭工具也不会关闭浏览器。</p></details>
+        <details class="browser-status"><summary>安装本地导入扩展（Chrome / Edge）</summary><p>打开 chrome://extensions 或 edge://extensions，开启开发者模式，选择“加载已解压的扩展程序”，载入本项目目录中的 extension 文件夹。进入该目录后直接点击“选择文件夹”，无需选择 manifest.json 文件。</p><p>在扩展详情中允许无痕 / InPrivate 运行。然后在 ChatGPT 无痕标签页中点击扩展，粘贴提取的令牌，点击“导入并刷新当前页”。Firefox 暂不支持此扩展。</p><p>令牌由你粘贴进扩展，本地工具不会自动传递。详细步骤见 extension 文件夹中的 INSTALL.md。</p></details>
+      </section>
+    </div>
+    <aside class="notes"><span class="notes-icon">i</span><p><strong>普通浏览器启动模式。</strong>启动器不注入令牌或检测登录；可正常登录，也可用另装的本地扩展导入。启动或写入成功不等于登录成功，必要的人机验证由你在网页中完成。</p></aside>
+    <footer><span>GPT AutoLogintor / v2.1</span><button id="clear-all" class="text-button">清空界面凭证</button><span>离线提取 · 本机浏览器启动</span></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "gpt-autologintor",
+  "version": "2.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local session extraction and native private browser launcher",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build:extension": "node scripts/build-extension.js",
+    "start": "node server.js",
+    "test": "node --test test/*.test.js"
+  }
+}
