@@ -4,20 +4,6 @@ Windows 本地工具：离线提取 Session JSON 中的 `sessionToken`，以及�
 
 另配 Chrome / Edge 本地扩展：在 ChatGPT 无痕标签中打开扩展，主动粘贴令牌并点击导入。安装目录为项目内的 `extension` 文件夹，详细步骤见 [extension/INSTALL.md](extension/INSTALL.md)。首次安装和无痕权限需在浏览器中手动启用。Firefox 启动功能保留，扩展首版不支持 Firefox。
 
-## 换电脑使用
-
-目前支持 Windows。新电脑安装 Git、Node.js 22 或更新版本，以及 Chrome / Edge（扩展支持这两种浏览器），然后在 PowerShell 执行：
-
-```powershell
-git clone https://github.com/cheesee9/GPT-AutoLogintor.git
-cd GPT-AutoLogintor
-.\start.cmd
-```
-
-可以克隆到任意目录，无需保持原电脑的 D 盘路径；没有第三方 npm 依赖，无需 `npm install`。扩展仍需在新电脑的浏览器中重新“加载已解压的扩展程序”，选择克隆目录内的 `extension` 文件夹，并重新开启无痕 / InPrivate 权限。文件选择器仅显示文件夹，不显示 `manifest.json`，进入 `extension` 后直接点“选择文件夹”。
-
-仓库只包含代码、扩展和文档，不携带账号登录状态、会话令牌、浏览器配置或旧电脑的扩展权限。以后更新可在项目目录执行 `git pull`；停止并重新启动工具，在扩展管理页点击“重新加载”。如有本地修改，先保存或提交修改再拉取。
-
 ## 启动
 
 双击 `start.cmd`。需要 Node.js 22 或更新版本；无第三方 npm 依赖，无需下载浏览器运行时。终端需保持运行。关闭工具不会关闭已经打开的普通浏览器。
