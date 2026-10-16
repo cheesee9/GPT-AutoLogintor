@@ -37,4 +37,4 @@
 
 ## 技术范围
 
-仅申请 `cookies` 和 ChatGPT 主站权限，使用 `incognito: split`。没有 Playwright、调试连接、内容脚本、指纹修改、验证码自动化或 Native Messaging。本版凭证由用户在扩展中主动粘贴，后续才能另行接入 Native Messaging。
+仅申请 `cookies` 和 ChatGPT 主站权限。本版凭证由用户在扩展中主动粘贴。
